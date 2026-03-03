@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FleetOpti AI | Edge-Native AI for Logistics</title>
+    <title>FleetOpti AI | Edge-Native AI for Commercial Logistics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        nvidia: '#76b900', // Фирменный зеленый цвет NVIDIA
+                        nvidia: '#76b900', // Фирменный зеленый NVIDIA
+                        'nvidia-dark': '#5a8d00',
                         dark: '#0f172a',
                         darker: '#020617',
+                        card: '#1e293b'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -21,131 +23,367 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Дополнительные кастомные анимации для технологичности */
+        .glow-text { text-shadow: 0 0 10px rgba(118, 185, 0, 0.5); }
+        .gradient-border {
+            position: relative;
+            background: #020617;
+            background-clip: padding-box;
+            border: 1px solid transparent;
+            border-radius: 1rem;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -1px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom right, #334155, #020617);
+        }
+        .gradient-border:hover::before {
+            background: linear-gradient(to bottom right, #76b900, #020617);
+        }
+    </style>
 </head>
-<body class="bg-darker text-white font-sans antialiased">
+<body class="bg-darker text-slate-300 font-sans antialiased selection:bg-nvidia selection:text-black">
 
-    <nav class="fixed w-full z-50 bg-darker/90 backdrop-blur-md border-b border-gray-800">
+    <nav class="fixed w-full z-50 bg-darker/80 backdrop-blur-lg border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                    <span class="text-2xl font-extrabold tracking-tighter">FleetOpti <span class="text-nvidia">AI</span></span>
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <i class="fa-solid fa-microchip text-nvidia text-2xl"></i>
+                    <span class="text-2xl font-extrabold tracking-tighter text-white">FleetOpti <span class="text-nvidia glow-text">AI</span></span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#platform" class="hover:text-nvidia transition-colors px-3 py-2 rounded-md text-sm font-medium">Platform</a>
-                        <a href="#technology" class="hover:text-nvidia transition-colors px-3 py-2 rounded-md text-sm font-medium">Technology</a>
-                        <a href="#stats" class="hover:text-nvidia transition-colors px-3 py-2 rounded-md text-sm font-medium">Use Cases</a>
+                        <a href="#problem" class="hover:text-nvidia transition-colors px-3 py-2 text-sm font-medium">The Problem</a>
+                        <a href="#architecture" class="hover:text-nvidia transition-colors px-3 py-2 text-sm font-medium">Architecture</a>
+                        <a href="#technology" class="hover:text-nvidia transition-colors px-3 py-2 text-sm font-medium">NVIDIA Stack</a>
+                        <a href="#usecases" class="hover:text-nvidia transition-colors px-3 py-2 text-sm font-medium">Use Cases</a>
                     </div>
                 </div>
-                <div>
-                    <a href="mailto:founders@fleetoptiai.online" class="bg-nvidia hover:bg-green-600 text-black font-bold py-2 px-6 rounded-full transition-all shadow-[0_0_15px_rgba(118,185,0,0.5)]">
-                        Request API Key
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-nvidia hover:bg-nvidia-dark text-black font-bold py-2 px-6 rounded-md transition-all shadow-[0_0_15px_rgba(118,185,0,0.3)]">
+                        Request Demo
                     </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-800 via-darker to-darker opacity-50"></div>
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-slate-800">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-darker to-darker opacity-60"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                Edge-Native AI for <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-nvidia to-green-400">Commercial Fleets</span>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-nvidia/30 bg-nvidia/10 text-nvidia text-sm font-semibold mb-8">
+                <span class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-nvidia opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-nvidia"></span>
+                </span>
+                Edge Computing meets Logistics
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                Stop Reacting. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-nvidia to-green-300">Start Predicting.</span>
             </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10">
-                Proactive predictive maintenance and dynamic routing powered by in-cabin Deep Learning and Computer Vision. Don't wait for the cloud. Compute on the Edge.
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-400 mb-10 leading-relaxed">
+                We build autonomous neural networks directly into commercial truck cabins. Powered by cutting-edge GPU architecture, FleetOpti AI eliminates latency, prevents mechanical failures, and dynamicly routes fleets globally.
             </p>
-            <div class="flex justify-center gap-4">
-                <a href="#technology" class="bg-transparent border-2 border-nvidia text-nvidia hover:bg-nvidia hover:text-black font-bold py-3 px-8 rounded-full transition-all">
-                    Explore Tech Stack
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#technology" class="bg-nvidia hover:bg-nvidia-dark text-black font-bold py-4 px-8 rounded-md transition-all text-lg">
+                    See Our Tech Stack
+                </a>
+                <a href="#contact" class="bg-transparent border border-slate-600 hover:border-slate-400 text-white font-bold py-4 px-8 rounded-md transition-all text-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-terminal"></i> API Access
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="platform" class="py-20 bg-dark">
+    <section id="problem" class="py-24 bg-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white">How It Works</h2>
-                <div class="w-24 h-1 bg-nvidia mx-auto mt-4 rounded"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-darker p-8 rounded-2xl border border-gray-800 hover:border-nvidia transition-colors group">
-                    <div class="text-nvidia text-4xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-camera"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Edge Vision & Telemetry</h3>
-                    <p class="text-gray-400 leading-relaxed">In-cabin edge devices process high-frequency acoustic data and driver behavior via Computer Vision in real-time, with zero latency.</p>
-                </div>
-                <div class="bg-darker p-8 rounded-2xl border border-gray-800 hover:border-nvidia transition-colors group">
-                    <div class="text-nvidia text-4xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-microchip"></i></div>
-                    <h3 class="text-xl font-bold mb-3">On-Board Deep Learning</h3>
-                    <p class="text-gray-400 leading-relaxed">Local neural networks predict mechanical failures thousands of miles before a check-engine light appears.</p>
-                </div>
-                <div class="bg-darker p-8 rounded-2xl border border-gray-800 hover:border-nvidia transition-colors group">
-                    <div class="text-nvidia text-4xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-route"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Cloud-Synced Routing</h3>
-                    <p class="text-gray-400 leading-relaxed">Aggregated fleet health and live traffic data power massive AI models to dynamically rebuild global logistics chains.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="technology" class="py-20 bg-darker">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white">Infrastructure & Technology</h2>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Built for maximum performance. We leverage the world's most advanced AI infrastructure to ensure zero-latency processing where it matters most.</p>
-            </div>
-            <div class="max-w-4xl mx-auto bg-dark border border-gray-800 rounded-2xl overflow-hidden shadow-2xl">
-                <div class="p-6 border-b border-gray-800 flex items-center">
-                    <i class="fa-solid fa-server text-nvidia text-2xl mr-4"></i>
-                    <h4 class="text-lg font-bold">NVIDIA Jetson Platform</h4>
-                    <span class="ml-auto text-sm text-gray-500">In-Cabin Compute</span>
-                </div>
-                <div class="p-6 border-b border-gray-800 flex items-center">
-                    <i class="fa-solid fa-network-wired text-nvidia text-2xl mr-4"></i>
-                    <h4 class="text-lg font-bold">NVIDIA TensorRT</h4>
-                    <span class="ml-auto text-sm text-gray-500">Model Inference Optimization</span>
-                </div>
-                <div class="p-6 border-b border-gray-800 flex items-center">
-                    <i class="fa-solid fa-eye text-nvidia text-2xl mr-4"></i>
-                    <h4 class="text-lg font-bold">NVIDIA Metropolis</h4>
-                    <span class="ml-auto text-sm text-gray-500">Advanced Video Analytics</span>
-                </div>
-                <div class="p-6 flex items-center">
-                    <i class="fa-solid fa-cloud text-nvidia text-2xl mr-4"></i>
-                    <h4 class="text-lg font-bold">Scalable GPU Cloud Architecture</h4>
-                    <span class="ml-auto text-sm text-gray-500">Foundational Model Training</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="stats" class="py-20 bg-nvidia text-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div>
-                    <div class="text-5xl font-extrabold mb-2">10M+</div>
-                    <div class="text-lg font-bold uppercase tracking-wide opacity-80">Miles Analyzed</div>
+                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-red-900/50 pb-4">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500 mr-2"></i> The Legacy Problem
+                    </h2>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-red-900/30 flex items-center justify-center text-red-500">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white">Cloud Latency</h4>
+                                <p class="text-slate-400 text-sm mt-1">Sending gigabytes of raw video and telemetry to the cloud for processing is too slow to prevent high-speed accidents.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-red-900/30 flex items-center justify-center text-red-500">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white">Reactive Maintenance</h4>
+                                <p class="text-slate-400 text-sm mt-1">Current systems only alert dispatchers after a component has already failed, leading to costly roadside towing.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div>
-                    <div class="text-5xl font-extrabold mb-2">500+</div>
-                    <div class="text-lg font-bold uppercase tracking-wide opacity-80">Fleets Managed</div>
+                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-nvidia/30 pb-4">
+                        <i class="fa-solid fa-check-double text-nvidia mr-2"></i> The FleetOpti Edge
+                    </h2>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-nvidia/20 flex items-center justify-center text-nvidia">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white">Zero-Latency Inference</h4>
+                                <p class="text-slate-400 text-sm mt-1">By moving heavy compute to the edge, our models analyze driver state and hazards in milliseconds, completely offline.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-nvidia/20 flex items-center justify-center text-nvidia">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-white">Acoustic Prediction</h4>
+                                <p class="text-slate-400 text-sm mt-1">Machine learning identifies micro-anomalies in engine vibration, predicting failures weeks before they happen.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-darker border-t border-gray-800 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="text-2xl font-extrabold tracking-tighter mb-4 md:mb-0">
-                FleetOpti <span class="text-nvidia">AI</span>
+    <section id="architecture" class="py-24 bg-darker border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Autonomous Data Pipeline</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-16">How we process millions of data points continuously without overwhelming bandwidth.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-slate-800 via-nvidia to-slate-800 -translate-y-1/2 z-0"></div>
+                
+                <div class="bg-card p-8 rounded-xl border border-slate-700 relative z-10 shadow-xl">
+                    <div class="w-16 h-16 bg-dark rounded-full border-2 border-slate-600 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-truck-moving text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">1. The Edge (In-Cabin)</h3>
+                    <p class="text-sm text-slate-400">Cameras and acoustic sensors feed raw, high-throughput data directly into local GPU nodes. Irrelevant data is discarded instantly.</p>
+                </div>
+                <div class="bg-card p-8 rounded-xl border border-nvidia relative z-10 shadow-[0_0_20px_rgba(118,185,0,0.15)] transform md:-translate-y-4">
+                    <div class="w-16 h-16 bg-dark rounded-full border-2 border-nvidia flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-brain text-nvidia"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">2. Local Inference</h3>
+                    <p class="text-sm text-slate-400">Optimized neural networks run hazard detection and fatigue analysis. Only critical alerts and compressed metadata are sent over 5G/LTE.</p>
+                </div>
+                <div class="bg-card p-8 rounded-xl border border-slate-700 relative z-10 shadow-xl">
+                    <div class="w-16 h-16 bg-dark rounded-full border-2 border-slate-600 flex items-center justify-center text-2xl mb-6 mx-auto">
+                        <i class="fa-solid fa-server text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">3. Global Cloud</h3>
+                    <p class="text-sm text-slate-400">Metadata from thousands of trucks converges in the cloud. Foundational AI models retrain and update global routing dynamically.</p>
+                </div>
             </div>
-            <div class="text-gray-500 text-sm text-center md:text-left">
-                &copy; 2026 FleetOpti AI Logistics. San Francisco & Kyiv.<br>
-                <a href="mailto:founders@fleetoptiai.online" class="hover:text-nvidia transition-colors">founders@fleetoptiai.online</a>
+        </div>
+    </section>
+
+    <section id="technology" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Powered by NVIDIA Ecosystem</h2>
+                    <p class="text-slate-400">Our entire infrastructure, from the truck cabin to the cloud training clusters, relies on purpose-built hardware and software frameworks to achieve industry-leading accuracy.</p>
+                </div>
+                <div class="text-nvidia text-5xl opacity-50"><i class="fa-solid fa-layer-group"></i></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="gradient-border p-8">
+                    <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-nvidia"></i> Jetson Platform
+                    </h3>
+                    <p class="text-sm text-slate-400 mb-4">We deploy NVIDIA Jetson Orin modules inside commercial vehicles. This provides server-class AI performance at the edge, capable of running multiple concurrent neural networks for computer vision and telemetry parsing.</p>
+                </div>
+                
+                <div class="gradient-border p-8">
+                    <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-code-branch text-nvidia"></i> TensorRT
+                    </h3>
+                    <p class="text-sm text-slate-400 mb-4">To maximize frame rates and minimize power consumption in the cabin, all our proprietary PyTorch models are optimized and compiled using NVIDIA TensorRT for ultra-low latency inference.</p>
+                </div>
+
+                <div class="gradient-border p-8">
+                    <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-video text-nvidia"></i> Metropolis
+                    </h3>
+                    <p class="text-sm text-slate-400 mb-4">Leveraging the Metropolis application framework, we efficiently manage video streams from multiple dash and driver-facing cameras, applying complex analytics to understand spatial dynamics on the highway.</p>
+                </div>
+
+                <div class="gradient-border p-8">
+                    <h3 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-cloud text-nvidia"></i> A100/H100 Cloud Compute
+                    </h3>
+                    <p class="text-sm text-slate-400 mb-4">The edge is only as smart as the models we train. We utilize scalable GPU clusters to train massive multimodal architectures on petabytes of historical logistics and weather data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-nvidia text-black border-y border-nvidia-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-black/20">
+                <div>
+                    <div class="text-4xl md:text-5xl font-extrabold mb-1">10M+</div>
+                    <div class="text-sm font-bold uppercase tracking-wider opacity-80">Miles Analyzed</div>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-extrabold mb-1">&lt;10ms</div>
+                    <div class="text-sm font-bold uppercase tracking-wider opacity-80">Edge Latency</div>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-extrabold mb-1">94%</div>
+                    <div class="text-sm font-bold uppercase tracking-wider opacity-80">Failure Prediction</div>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-extrabold mb-1">San Francisco</div>
+                    <div class="text-sm font-bold uppercase tracking-wider opacity-80">& Kyiv Based</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-darker">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-center text-white mb-12">Frequently Asked Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-card rounded-lg p-6 border border-slate-800">
+                    <h4 class="text-lg font-bold text-white mb-2">Do you replace existing ELD/Telematics providers?</h4>
+                    <p class="text-slate-400 text-sm">No. FleetOpti AI acts as a sophisticated intelligence layer that sits on top of standard ELD systems. We handle the heavy AI compute, while your existing hardware manages basic compliance reporting.</p>
+                </div>
+                <div class="bg-card rounded-lg p-6 border border-slate-800">
+                    <h4 class="text-lg font-bold text-white mb-2">How do you handle areas with no cellular coverage?</h4>
+                    <p class="text-slate-400 text-sm">That is exactly why we built an Edge-native platform. Our models run locally on the Jetson module. If a truck enters a dead zone, accident prevention and driver alerts continue to operate at 100% capacity.</p>
+                </div>
+                <div class="bg-card rounded-lg p-6 border border-slate-800">
+                    <h4 class="text-lg font-bold text-white mb-2">Is the hardware included in the subscription?</h4>
+                    <p class="text-slate-400 text-sm">We operate on an HaaS (Hardware as a Service) + SaaS model. Edge computing units are leased as part of the monthly enterprise contract, ensuring fleets always have the latest GPU capabilities without massive capital expenditure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-dark border-t border-slate-800 relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-nvidia rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-card p-8 md:p-12 rounded-2xl border border-slate-700 shadow-2xl">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-white mb-3">Join the Early Access Program</h2>
+                    <p class="text-slate-400">Request API access or schedule a technical demo for your fleet operations team.</p>
+                </div>
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Form submitted! (Demo Mode)');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                            <input type="text" class="w-full bg-darker border border-slate-600 rounded-md py-3 px-4 text-white focus:outline-none focus:border-nvidia focus:ring-1 focus:ring-nvidia transition-colors" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Work Email</label>
+                            <input type="email" class="w-full bg-darker border border-slate-600 rounded-md py-3 px-4 text-white focus:outline-none focus:border-nvidia focus:ring-1 focus:ring-nvidia transition-colors" placeholder="john@logistics.com" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Company Name</label>
+                            <input type="text" class="w-full bg-darker border border-slate-600 rounded-md py-3 px-4 text-white focus:outline-none focus:border-nvidia focus:ring-1 focus:ring-nvidia transition-colors" placeholder="Acme Transport">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Fleet Size</label>
+                            <select class="w-full bg-darker border border-slate-600 rounded-md py-3 px-4 text-white focus:outline-none focus:border-nvidia focus:ring-1 focus:ring-nvidia transition-colors appearance-none">
+                                <option>10 - 50 Vehicles</option>
+                                <option>51 - 250 Vehicles</option>
+                                <option>250+ Vehicles</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">How can we help?</label>
+                        <textarea rows="4" class="w-full bg-darker border border-slate-600 rounded-md py-3 px-4 text-white focus:outline-none focus:border-nvidia focus:ring-1 focus:ring-nvidia transition-colors" placeholder="Tell us about your current telematics challenges..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-nvidia hover:bg-nvidia-dark text-black font-bold py-4 rounded-md transition-all text-lg shadow-[0_0_15px_rgba(118,185,0,0.2)] hover:shadow-[0_0_25px_rgba(118,185,0,0.4)]">
+                        Submit Request
+                    </button>
+                    <p class="text-center text-xs text-slate-500 mt-4">We will normally respond within 24 hours.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-darker border-t border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <div class="text-2xl font-extrabold tracking-tighter text-white mb-4">
+                        FleetOpti <span class="text-nvidia">AI</span>
+                    </div>
+                    <p class="text-slate-500 text-sm mb-4">
+                        Building the nervous system for the next generation of global transportation and commercial logistics.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-500 hover:text-nvidia transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-nvidia transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-nvidia transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-nvidia transition-colors">Edge Hardware</a></li>
+                        <li><a href="#" class="hover:text-nvidia transition-colors">Cloud Dashboard</a></li>
+                        <li><a href="#" class="hover:text-nvidia transition-colors">Predictive API</a></li>
+                        <li><a href="#" class="hover:text-nvidia transition-colors">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Developers</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-nvidia transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-nvidia transition-colors">SDKs (Python/C++)</a></li>
+                        <li><a href="#" class="hover:text-nvidia transition-colors">Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-nvidia transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-nvidia transition-colors">Careers</a></li>
+                        <li><a href="mailto:founders@fleetoptiai.online" class="hover:text-white transition-colors">founders@fleetoptiai.online</a></li>
+                        <li class="pt-2"><span class="bg-slate-800 text-slate-300 py-1 px-2 rounded text-xs border border-slate-700">San Francisco</span></li>
+                        <li><span class="bg-slate-800 text-slate-300 py-1 px-2 rounded text-xs border border-slate-700">Kyiv</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600">
+                <p>&copy; 2026 FleetOpti AI Logistics. All rights reserved.</p>
+                <div class="space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-400">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
