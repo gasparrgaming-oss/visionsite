@@ -1,217 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FleetOpti AI - Next-Gen Logistics Optimization</title>
-
-<!-- Bootstrap 5 CDN -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --primary-blue: #0d3b66;
-    --accent-orange: #ff7a00;
-    --light-gray: #f8f9fa;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #ffffff;
-    color: #1a1a1a;
-}
-
-.navbar-brand {
-    font-weight: 700;
-    color: var(--primary-blue) !important;
-}
-
-.btn-primary-custom {
-    background-color: var(--primary-blue);
-    border: none;
-    color: #fff;
-}
-
-.btn-primary-custom:hover {
-    background-color: #0b3054;
-}
-
-.btn-orange {
-    background-color: var(--accent-orange);
-    border: none;
-    color: #fff;
-}
-
-.btn-orange:hover {
-    background-color: #e96e00;
-}
-
-.hero {
-    padding: 120px 0 80px 0;
-    background-color: var(--light-gray);
-}
-
-.hero h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-}
-
-.section-title {
-    font-weight: 700;
-    color: var(--primary-blue);
-    margin-bottom: 2rem;
-}
-
-.card {
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
-
-.infrastructure-badge {
-    background-color: #eef3f9;
-    border-left: 4px solid var(--primary-blue);
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 6px;
-}
-
-.stats-section {
-    background-color: var(--primary-blue);
-    color: #fff;
-    padding: 60px 0;
-}
-
-.stats-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent-orange);
-}
-
-footer {
-    background-color: #f1f3f5;
-    padding: 30px 0;
-    font-size: 0.9rem;
-}
-
-.dashboard-placeholder {
-    background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
-    border: 2px dashed #cbd5e1;
-    height: 300px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6b7280;
-    font-weight: 500;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FleetOpti AI | Edge-Native AI for Logistics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nvidia: '#76b900', // Фирменный зеленый цвет NVIDIA
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<body class="bg-darker text-white font-sans antialiased">
 
-<body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-<div class="container">
-    <a class="navbar-brand" href="#">FleetOpti AI</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#platform">Platform</a></li>
-            <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
-            <li class="nav-item"><a class="nav-link" href="#usecases">Use Cases</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-        </ul>
-        <a href="#" class="btn btn-orange ms-3">Get API Key</a>
-    </div>
-</div>
-</nav>
-
-<!-- Hero -->
-<section class="hero">
-<div class="container">
-<div class="row align-items-center">
-    <div class="col-md-6">
-        <h1>Next-Gen Logistics Optimization</h1>
-        <p class="lead mt-3">Reduce fuel costs by up to 30% with predictive route modeling and AI.</p>
-        <a href="#" class="btn btn-primary-custom btn-lg mt-3">Optimize Your Fleet</a>
-    </div>
-    <div class="col-md-6">
-        <div class="dashboard-placeholder">
-            AI Routing Dashboard / Map Visualization
-        </div>
-    </div>
-</div>
-</div>
-</section>
-
-<!-- How It Works -->
-<section class="py-5">
-<div class="container text-center">
-    <h2 class="section-title">How It Works</h2>
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card p-4 h-100">
-                <h5>Data Ingestion</h5>
-                <p>We collect telemetry from your fleet in real-time for accurate modeling.</p>
+    <nav class="fixed w-full z-50 bg-darker/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-extrabold tracking-tighter">FleetOpti <span class="text-nvidia">AI</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#platform" class="hover:text-nvidia transition-colors px-3 py-2 rounded-md text-sm font-medium">Platform</a>
+                        <a href="#technology" class="hover:text-nvidia transition-colors px-3 py-2 rounded-md text-sm font-medium">Technology</a>
+                        <a href="#stats" class="hover:text-nvidia transition-colors px-3 py-2 rounded-md text-sm font-medium">Use Cases</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="mailto:founders@fleetoptiai.online" class="bg-nvidia hover:bg-green-600 text-black font-bold py-2 px-6 rounded-full transition-all shadow-[0_0_15px_rgba(118,185,0,0.5)]">
+                        Request API Key
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card p-4 h-100">
-                <h5>AI Processing</h5>
-                <p>Our Vertex AI models analyze traffic, weather patterns, and vehicle load.</p>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-800 via-darker to-darker opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                Edge-Native AI for <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-nvidia to-green-400">Commercial Fleets</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10">
+                Proactive predictive maintenance and dynamic routing powered by in-cabin Deep Learning and Computer Vision. Don't wait for the cloud. Compute on the Edge.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#technology" class="bg-transparent border-2 border-nvidia text-nvidia hover:bg-nvidia hover:text-black font-bold py-3 px-8 rounded-full transition-all">
+                    Explore Tech Stack
+                </a>
             </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card p-4 h-100">
-                <h5>Smart Routing</h5>
-                <p>Drivers receive optimized paths instantly through integrated dashboards.</p>
+    </section>
+
+    <section id="platform" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white">How It Works</h2>
+                <div class="w-24 h-1 bg-nvidia mx-auto mt-4 rounded"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-darker p-8 rounded-2xl border border-gray-800 hover:border-nvidia transition-colors group">
+                    <div class="text-nvidia text-4xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-camera"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Edge Vision & Telemetry</h3>
+                    <p class="text-gray-400 leading-relaxed">In-cabin edge devices process high-frequency acoustic data and driver behavior via Computer Vision in real-time, with zero latency.</p>
+                </div>
+                <div class="bg-darker p-8 rounded-2xl border border-gray-800 hover:border-nvidia transition-colors group">
+                    <div class="text-nvidia text-4xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="text-xl font-bold mb-3">On-Board Deep Learning</h3>
+                    <p class="text-gray-400 leading-relaxed">Local neural networks predict mechanical failures thousands of miles before a check-engine light appears.</p>
+                </div>
+                <div class="bg-darker p-8 rounded-2xl border border-gray-800 hover:border-nvidia transition-colors group">
+                    <div class="text-nvidia text-4xl mb-6 group-hover:scale-110 transition-transform"><i class="fa-solid fa-route"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Cloud-Synced Routing</h3>
+                    <p class="text-gray-400 leading-relaxed">Aggregated fleet health and live traffic data power massive AI models to dynamically rebuild global logistics chains.</p>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</section>
+    </section>
 
-<!-- Infrastructure -->
-<section class="py-5 bg-light">
-<div class="container">
-    <h2 class="section-title text-center">Infrastructure & Technology</h2>
-    <div class="infrastructure-badge">Google Cloud Pub/Sub for streaming data</div>
-    <div class="infrastructure-badge">Cloud SQL for structured fleet data</div>
-    <div class="infrastructure-badge">Google Maps Platform for route visualization</div>
-    <div class="infrastructure-badge">Vertex AI for predictive modeling & machine learning</div>
-</div>
-</section>
-
-<!-- Stats -->
-<section class="stats-section text-center">
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="stats-number">10M+</div>
-            <p>Miles Analyzed</p>
+    <section id="technology" class="py-20 bg-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white">Infrastructure & Technology</h2>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Built for maximum performance. We leverage the world's most advanced AI infrastructure to ensure zero-latency processing where it matters most.</p>
+            </div>
+            <div class="max-w-4xl mx-auto bg-dark border border-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+                <div class="p-6 border-b border-gray-800 flex items-center">
+                    <i class="fa-solid fa-server text-nvidia text-2xl mr-4"></i>
+                    <h4 class="text-lg font-bold">NVIDIA Jetson Platform</h4>
+                    <span class="ml-auto text-sm text-gray-500">In-Cabin Compute</span>
+                </div>
+                <div class="p-6 border-b border-gray-800 flex items-center">
+                    <i class="fa-solid fa-network-wired text-nvidia text-2xl mr-4"></i>
+                    <h4 class="text-lg font-bold">NVIDIA TensorRT</h4>
+                    <span class="ml-auto text-sm text-gray-500">Model Inference Optimization</span>
+                </div>
+                <div class="p-6 border-b border-gray-800 flex items-center">
+                    <i class="fa-solid fa-eye text-nvidia text-2xl mr-4"></i>
+                    <h4 class="text-lg font-bold">NVIDIA Metropolis</h4>
+                    <span class="ml-auto text-sm text-gray-500">Advanced Video Analytics</span>
+                </div>
+                <div class="p-6 flex items-center">
+                    <i class="fa-solid fa-cloud text-nvidia text-2xl mr-4"></i>
+                    <h4 class="text-lg font-bold">Scalable GPU Cloud Architecture</h4>
+                    <span class="ml-auto text-sm text-gray-500">Foundational Model Training</span>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <div class="stats-number">500+</div>
-            <p>Fleets Managed</p>
+    </section>
+
+    <section id="stats" class="py-20 bg-nvidia text-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div>
+                    <div class="text-5xl font-extrabold mb-2">10M+</div>
+                    <div class="text-lg font-bold uppercase tracking-wide opacity-80">Miles Analyzed</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-extrabold mb-2">500+</div>
+                    <div class="text-lg font-bold uppercase tracking-wide opacity-80">Fleets Managed</div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="text-center">
-<div class="container">
-    <p>© 2026 FleetOpti AI Logistics. San Francisco & Kyiv.</p>
-    <p>fleetoptiai.online</p>
-</div>
-</footer>
+    <footer class="bg-darker border-t border-gray-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-2xl font-extrabold tracking-tighter mb-4 md:mb-0">
+                FleetOpti <span class="text-nvidia">AI</span>
+            </div>
+            <div class="text-gray-500 text-sm text-center md:text-left">
+                &copy; 2026 FleetOpti AI Logistics. San Francisco & Kyiv.<br>
+                <a href="mailto:founders@fleetoptiai.online" class="hover:text-nvidia transition-colors">founders@fleetoptiai.online</a>
+            </div>
+        </div>
+    </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
